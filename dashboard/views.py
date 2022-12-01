@@ -17,12 +17,6 @@ def lights(request):
     print(request.POST)
     return render(request,'lights.html',{'currentmode':'auto', 'currentstate':'on'})
 
-def publish(request):
-    modeObject = Mode.objects.all()
-    print(modeObject)
-    # rc, mid = mqtt_client.publish(request_data['topic'], request_data['msg'])
-    # return JsonResponse({'code': rc})
-
 class ModeViewSet(viewsets.ModelViewSet):
     queryset = Mode.objects.all()
     serializer_class = ModeSerializer
