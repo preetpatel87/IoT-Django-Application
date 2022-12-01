@@ -23,9 +23,10 @@ class StateViewSet(viewsets.ModelViewSet):
     queryset = State.objects.all()
     serializer_class = StateSerializer
 
-def home(request):
+def home(request): 
     out=''
     print(dir(request))
+    print(request.POST)
     if 'on' in request.POST:
         values = {"name": "on"}
         r=request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
@@ -50,12 +51,14 @@ def home(request):
         result=r.text
         output = json.loads(result)
         out=output['name']
-        r=request.Request.get('http://127.0.0.1:8000/mode/1/', auth=('username', 'password'))
-        result=r.text
-        output = json.loads(result)
-        currentmode=output['name']
-        r=request.Request.get('http://127.0.0.1:8000/state/1/', auth=('username', 'password'))
-        result=r.text
-        output = json.loads(result)
-        currentstate=output['name']
+    
+    r=request.Request.get('http://127.0.0.1:8000/mode/1/', auth=('username', 'password'))
+    result=r.text
+    output = json.loads(result)
+    currentmode=output['name']
+    r=request.Request.get('http://127.0.0.1:8000/state/1/', auth=('username', 'password'))
+    result=r.text
+    output = json.loads(result)
+    currentstate=output['name']
+
     return render('lights.html',{'r':out, 'currentmode':currentmode, 'currentstate':currentstate}, context_instance=RequestContext(request))
