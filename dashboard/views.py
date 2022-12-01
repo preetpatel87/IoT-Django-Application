@@ -58,4 +58,4 @@ def home(request):
     result=r.text
     output = json.loads(result)
     currentstate=output['name']
-    return render('lights.html',{'r':out, 'currentmode':currentmode, 'currentstate':currentstate}, context_instance=RequestContext(request))
+    return render(request, 'lights.html',{'r':out, 'currentmode':currentmode, 'currentstate':currentstate}, context_instance=RequestContext(request))
