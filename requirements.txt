@@ -1,6 +1,18 @@
+arduino-python3==0.6
+asgiref==3.5.2
 Django==4.1
+django-filter==22.1
+djangorestframework==3.14.0
 environs==7.3.1
-# psycopg2>=2.8
-gunicorn
-psycopg2-binary
-djangorestframework
+gunicorn==20.1.0
+Markdown==3.4.1
+marshmallow==3.19.0
+packaging==21.3
+psycopg2==2.9.5
+psycopg2-binary==2.9.5
+pyparsing==3.0.9
+pyserial==3.5
+python-dotenv==0.21.0
+pytz==2022.6
+sqlparse==0.4.3
+tzdata==2022.6
