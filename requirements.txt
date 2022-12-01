@@ -3,4 +3,4 @@ environs==7.3.1
 # psycopg2>=2.8
 gunicorn
 psycopg2-binary
-rest_framework
+djangorestframework
