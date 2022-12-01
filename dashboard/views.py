@@ -16,6 +16,9 @@ def index(request):
 def snoop(request):
     return HttpResponse("Don't do school, stay in drugs")
 
+def lights(request):
+    return render(request,"lights.html")
+
 
 class ModeViewSet(viewsets.ModelViewSet):
     queryset = Mode.objects.all()
