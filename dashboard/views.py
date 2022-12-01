@@ -34,27 +34,27 @@ def home(request):
         out=output['name']
     if 'off' in request.POST:
         values = {"name": "off"}
-        r=request.Request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
+        r=request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
         result=r.text
         output = json.loads(result)
         out=output['name']
     if 'auto' in request.POST:
         values = {"name": "auto"}
-        r=request.Request.put('http://127.0.0.1:8000/mode/1/', data=values, auth=('username', 'password'))
+        r=request.put('http://127.0.0.1:8000/mode/1/', data=values, auth=('username', 'password'))
         result=r.text
         output = json.loads(result)
         out=output['name']
     if 'manual' in request.POST:
         values = {"name": "manual"}
-        r=request.Request.put('http://127.0.0.1:8000/mode/1/', data=values, auth=('username', 'password'))
+        r=request.put('http://127.0.0.1:8000/mode/1/', data=values, auth=('username', 'password'))
         result=r.text
         output = json.loads(result)
         out=output['name']
-    r=request.Request.get('http://127.0.0.1:8000/mode/1/', auth=('username', 'password'))
+    r=request.get('http://127.0.0.1:8000/mode/1/', auth=('username', 'password'))
     result=r.text
     output = json.loads(result)
     currentmode=output['name']
-    r=request.Request.get('http://127.0.0.1:8000/state/1/', auth=('username', 'password'))
+    r=request.get('http://127.0.0.1:8000/state/1/', auth=('username', 'password'))
     result=r.text
     output = json.loads(result)
     currentstate=output['name']
