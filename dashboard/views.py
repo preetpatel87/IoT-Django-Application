@@ -14,7 +14,7 @@ def index(request):
 
 def lights(request):
     print(request.POST)
-    return render('lights.html',{'currentmode':'auto', 'currentstate':'on'}, context_instance=RequestContext(request))
+    return render('lights.html',{'currentmode':'auto', 'currentstate':'on'})
 
 class ModeViewSet(viewsets.ModelViewSet):
     queryset = Mode.objects.all()
