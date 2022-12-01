@@ -1,0 +1,51 @@
+<div class="app-content-inner">
+    <fieldset>
+    <div class="field clearfix">
+    <label class="input-label icon-lamp" for="lamp-state">Auto</label>
+    <input id="lamp-state" class="input js-lamp-state hidden" type="checkbox">
+    {% if currentmode == 'auto' %}
+    <div class="js-lamp-state-toggle ui-toggle " data-toggle=".js-lamp-state">
+    {% else %}
+    <div class="js-lamp-state-toggle ui-toggle js-toggle-off" data-toggle=".js-lamp-state">
+    {% endif %}
+    <span class="ui-toggle-slide clearfix">
+    <form id="my_form11" action="" method="post">{% csrf_token %}
+    <input name="auto" value="auto" type="hidden" />
+    <a href="#" onclick="$(this).closest('form').submit()"><strong class="ui-toggle-off">OFF</strong></a>
+    </form>
+    <strong class="ui-toggle-handle brushed-metal"></strong>
+    <form id="my_form13" action="" method="post">{% csrf_token %}
+    <input name="manual" value="manual" type="hidden" />
+    <a href="#" onclick="$(this).closest('form').submit()"><strong class="ui-toggle-on">ON</strong></a>
+    </form></span>
+    </div></div>
+    <div class="field clearfix">
+    <label class="input-label icon-lamp" for="tv-state">Light</label>
+    <input id="tv-state" class="input js-tv-state hidden" type="checkbox">
+    {% if currentstate == 'on' %}
+    <div class="js-tv-state-toggle ui-toggle " data-toggle=".js-tv-state">
+    {% else %}
+    <div class="js-tv-state-toggle ui-toggle js-toggle-off" data-toggle=".js-tv-state">
+    {% endif %}
+    {% if currentmode == 'manual' %}
+    <span class="ui-toggle-slide clearfix">
+    <form id="my_form2" action="" method="post">{% csrf_token %}
+    <input name="on" value="on" type="hidden" />
+    <a href="#" onclick="$(this).closest('form').submit()"><strong class="ui-toggle-off">OFF</strong></a>
+    </form>
+    <strong class="ui-toggle-handle brushed-metal"></strong>
+    <form id="my_form3" action="" method="post">{% csrf_token %}
+    <input name="off" value="off" type="hidden" />
+    <a href="#" onclick="$(this).closest('form').submit()"><strong class="ui-toggle-on">ON</strong></a>
+    </form>
+    </span>
+    {% endif %}
+    {% if currentmode == 'auto' %}
+    {% if currentstate == 'on' %}
+    <strong class="ui-toggle-on">&nbsp;&nbsp;&nbsp;&nbsp;ON</strong>
+    {% else %}
+    <strong class="ui-toggle-on">&nbsp;&nbsp;&nbsp;&nbsp;OFF</strong>
+    {% endif %}{% endif %}
+    </div>
+    </div>
+    </fieldset></div></div></div>
