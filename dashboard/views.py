@@ -5,7 +5,7 @@ from django.template import RequestContext
 from dashboard.models import Mode, State
 from rest_framework import viewsets,request
 from dashboard.serializers import ModeSerializer, StateSerializer
-from mqtt_test.mqtt import client as mqtt_client
+# from mqtt_test.mqtt import client as mqtt_client
 
 # Create your views here.
 from django.http import HttpResponse
