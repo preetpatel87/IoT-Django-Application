@@ -13,9 +13,6 @@ from django.http import HttpResponse
 def index(request):
     return render(request,"index.html")
 
-def snoop(request):
-    return HttpResponse("Don't do school, stay in drugs")
-
 def lights(request):
     return render(request,"lights.html")
 
@@ -34,7 +31,6 @@ def home(request):
         values = {"name": "on"}
         r=request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
         result=r.text
-        
         output = json.loads(result)
         out=output['name']
     if 'off' in request.POST:
@@ -63,4 +59,4 @@ def home(request):
         result=r.text
         output = json.loads(result)
         currentstate=output['name']
-        return render('lights.html',{'r':out, 'currentmode':currentmode, 'currentstate':currentstate}, context_instance=RequestContext(request))
+    return render('lights.html',{'r':out, 'currentmode':currentmode, 'currentstate':currentstate}, context_instance=RequestContext(request))
