@@ -9,13 +9,11 @@ from dashboard.serializers import ModeSerializer, StateSerializer
 # Create your views here.
 from django.http import HttpResponse
 
-
 def index(request):
     return render(request,"index.html")
 
 def lights(request):
     return render(request,"lights.html")
-
 
 class ModeViewSet(viewsets.ModelViewSet):
     queryset = Mode.objects.all()
@@ -27,6 +25,7 @@ class StateViewSet(viewsets.ModelViewSet):
 
 def home(request):
     out=''
+    print(dir(request))
     if 'on' in request.POST:
         values = {"name": "on"}
         r=request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
