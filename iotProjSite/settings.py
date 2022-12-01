@@ -36,6 +36,7 @@ if ENV_ALLOWED_HOST is not None:
 # Application definition
 
 INSTALLED_APPS = [
+    'dashboard',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
