@@ -28,33 +28,33 @@ def home(request):
     out=""
     if 'on' in request.POST:
         values = {"name": "on"}
-        r=request.put('http://127.0.0.1:8000/state/1/', data=values)
+        r=request.put('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/1/', data=values)
         result=r.text
         output = json.loads(result)
         out=output['name']
     if 'off' in request.POST:
         values = {"name": "off"}
-        r=request.put('http://127.0.0.1:8000/state/1/', data=values)
+        r=request.put('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/1/', data=values)
         result=r.text
         output = json.loads(result)
         out=output['name']
     if 'auto' in request.POST:
         values = {"name": "auto"}
-        r=request.put('http://127.0.0.1:8000/mode/1/', data=values)
+        r=request.put('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/1/', data=values)
         result=r.text
         output = json.loads(result)
         out=output['name']
     if 'manual' in request.POST:
         values = {"name": "manual"}
-        r=request.put('http://127.0.0.1:8000/mode/1/', data=values)
+        r=request.put('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/1/', data=values)
         result=r.text
         output = json.loads(result)
         out=output['name']
-    r=request.GET.get('http://127.0.0.1:8000/mode/1/')
+    r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/1/')
     result=r.text
     output = json.loads(result)
     currentmode=output['name']
-    r=request.GET.get('http://127.0.0.1:8000/state/1/')
+    r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/1/')
     result=r.text
     output = json.loads(result)
     currentstate=output['name']
