@@ -53,12 +53,12 @@ def home(request):
         out=output['name']
     r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/')
     print(r)
-    result=r.text
+    result=r.json
     output = json.loads(result)
     currentmode=output['name']
     r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/')
     print(r)
-    result=r.name
+    result=r.json
     output = json.loads(result)
     currentstate=output['name']
     return render(request, 'lights.html',{'r':out, 'currentmode':currentmode, 'currentstate':currentstate}, context_instance=RequestContext(request))
