@@ -50,11 +50,11 @@ def home(request):
         result=r.text
         output = json.loads(result)
         out=output['name']
-    r=request.get('http://127.0.0.1:8000/mode/1/', auth=('username', 'password'))
+    r=request.GET.get('http://127.0.0.1:8000/mode/1/', auth=('username', 'password'))
     result=r.text
     output = json.loads(result)
     currentmode=output['name']
-    r=request.get('http://127.0.0.1:8000/state/1/', auth=('username', 'password'))
+    r=request.GET.get('http://127.0.0.1:8000/state/1/', auth=('username', 'password'))
     result=r.text
     output = json.loads(result)
     currentstate=output['name']
