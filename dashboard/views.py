@@ -23,10 +23,10 @@ class StateViewSet(viewsets.ModelViewSet):
     queryset = State.objects.all()
     serializer_class = StateSerializer
 
-def home(request): 
-    out=''
+def home(request):
     print(dir(request))
     print(request.POST)
+    print(request.body)
     if 'on' in request.POST:
         values = {"name": "on"}
         r=request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
