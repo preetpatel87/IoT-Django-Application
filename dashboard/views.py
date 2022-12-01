@@ -51,12 +51,12 @@ def home(request):
         result=r.text
         output = json.loads(result)
         out=output['name']
-    r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/1/')
+    r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/')
     print(r)
     result=r.text
     output = json.loads(result)
     currentmode=output['name']
-    r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/1/')
+    r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/')
     print(r)
     result=r.name
     output = json.loads(result)
