@@ -37,7 +37,6 @@ if ENV_ALLOWED_HOST is not None:
 
 INSTALLED_APPS = [
     'dashboard',
-    'rest_framework'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
