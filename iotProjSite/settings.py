@@ -14,6 +14,7 @@ from django.core.management.utils import get_random_secret_key
 import sys
 import dj_database_url
 from pathlib import Path
+import paho.mqtt.client as mqtt
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -136,3 +137,19 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+MQTT_SERVER = '9511cb223d8c4115921ca0e7542cc769.s2.eu.hivemq.cloud'
+MQTT_PORT = 8883
+MQTT_KEEPALIVE = 60
+MQTT_USER = 'username'
+MQTT_PASSWORD = 'password'
+
+client = mqtt.Client()
+client.on_connect = on_connect
+client.on_message = on_message
+client.username_pw_set(settings.MQTT_USER, settings.MQTT_PASSWORD)
+client.connect(
+    host=settings.MQTT_SERVER,
+    port=settings.MQTT_PORT,
+    keepalive=settings.MQTT_KEEPALIVE
+)

@@ -5,6 +5,7 @@ from django.template import RequestContext
 from dashboard.models import Mode, State
 from rest_framework import viewsets,request
 from dashboard.serializers import ModeSerializer, StateSerializer
+from mqtt_test.mqtt import client as mqtt_client
 
 # Create your views here.
 from django.http import HttpResponse
@@ -15,6 +16,10 @@ def index(request):
 def lights(request):
     print(request.POST)
     return render(request,'lights.html',{'currentmode':'auto', 'currentstate':'on'})
+
+def publish(request):
+    rc, mid = mqtt_client.publish(request_data['topic'], request_data['msg'])
+    return JsonResponse({'code': rc})
 
 class ModeViewSet(viewsets.ModelViewSet):
     queryset = Mode.objects.all()
@@ -51,10 +56,12 @@ def home(request):
         output = json.loads(result)
         out=output['name']
     r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/mode/1/')
-    result=r.name
+    print(r)
+    result=r.text
     output = json.loads(result)
     currentmode=output['name']
     r=request.GET.get('https://ventilation-system-dashboard-ndrgz.ondigitalocean.app/state/1/')
+    print(r)
     result=r.name
     output = json.loads(result)
     currentstate=output['name']
