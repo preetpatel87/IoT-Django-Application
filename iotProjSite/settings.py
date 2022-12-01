@@ -138,6 +138,16 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+def on_connect(mqtt_client, userdata, flags, rc):
+   if rc == 0:
+       print('Connected successfully')
+       mqtt_client.subscribe('django/mqtt')
+   else:
+       print('Bad connection. Code:', rc)
+
+def on_message(mqtt_client, userdata, msg):
+   print(f'Received message on topic: {msg.topic} with payload: {msg.payload}')
+
 MQTT_SERVER = '9511cb223d8c4115921ca0e7542cc769.s2.eu.hivemq.cloud'
 MQTT_PORT = 8883
 MQTT_KEEPALIVE = 60
