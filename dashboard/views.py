@@ -34,6 +34,7 @@ def home(request):
         values = {"name": "on"}
         r=request.put('http://127.0.0.1:8000/state/1/', data=values, auth=('username', 'password'))
         result=r.text
+        
         output = json.loads(result)
         out=output['name']
     if 'off' in request.POST:
