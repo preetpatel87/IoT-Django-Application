@@ -13,6 +13,7 @@ def index(request):
     return render(request,"index.html")
 
 def lights(request):
+    print(request.POST)
     return render(request,"lights.html")
 
 class ModeViewSet(viewsets.ModelViewSet):
